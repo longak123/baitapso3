@@ -9,6 +9,10 @@ namespace baitapso3.ViewModels
 {
     public class CourseViewModel
     {
+        internal List<Attendance> Attendances;
+        internal List<Following> Followings;
+
+        public int Id { get; set; }
         [Required]
         public string Place { get; set; }
         [Required]
@@ -23,6 +27,13 @@ namespace baitapso3.ViewModels
         public DateTime GetDateTime()
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
+        }
+        public IEnumerable<Course> UpcomingCourses { get; set; }
+        public bool ShowAction { get; set; }
+        public string Heading { get; set; }
+        public string Action
+        {
+            get { return (Id != 0) ? "Update" : "Create"; }
         }
     }
 }
